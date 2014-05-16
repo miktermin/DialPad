@@ -29,3 +29,33 @@ html, body
     padding: 0;
     border: 1px solid #2D3746;
 }
+
+#number-field
+{
+    width: inherit;
+    height: 150px;
+}
+
+#matching-contacts
+{
+    width: inherit;
+    height: 130px;
+    background-color: #323232;
+}
+
+#dialpad
+{
+    width: inherit;
+    height: 100%;
+    background-color: #1A1A1A;
+}
+
+.numbers
+{
+    width: 200px;
+    height: 150px;
+    background-color: #696969;
+    margin-left: 25px;
+    display: inline-block;
+    padding: 0;
+}
