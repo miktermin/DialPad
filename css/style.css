@@ -1,0 +1,31 @@
+html, body 
+{
+    margin: 0;
+    padding: 0;
+}
+
+#container
+{
+    height: 100%;
+    width: 700px;
+    margin: 0 auto;
+    background-color: black;
+}
+
+#tabs
+{
+    height: 140px;
+    width: inherit;
+}
+
+.tab
+{
+    width: 138px;
+    height: inherit;
+    display: inline-block;
+    float: left;
+    background-color: #252F3F;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #2D3746;
+}
