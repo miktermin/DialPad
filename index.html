@@ -4,31 +4,97 @@
         <link href="css/style.css" type="text/css" rel="stylesheet"></style>
         <script src="lib/jquery-2.1.1.min.js"></script>
         <script src="lib/knockout-3.1.0.js"></script>
+        <script src="js/app.js"></script>
     </head>
     <body>
-        <div id="container">
+        <div id="outer">
+            <div id="container">
+                <div id="tabs">
+                    <div class="tab">
+                        Keypad
+                    </div>
+                    <div class="tab">
+                        Logs
+                    </div>
+                    <div class="tab">
+                        Contacts
+                    </div>
+                    <div class="tab">
+                        Favorites
+                    </div>
+                    <div class="tab">
+                        Groups
+                    </div>
+                </div>
 
-            <div id="tabs">
-                <div id="keypad" class="tab">
+                <div id="dialed">
                 </div>
-                <div id="logs" class="tab">
-                </div>
-                <div id="contacts" class="tab">
-                </div>
-                <div id="favorites" class="tab">
-                </div>
-                <div id="groups" class="tab">
-                </div>
-            </div>
 
-            <div id="number-field"></div>
+                <div id="matched">
+                </div>
 
-            <div id="matching-contacts"></div>
-
-            <div id="dialpad">
-                <div class="numbers">1</div>
-                <div class="numbers">2</div>
-                <div class="numbers">3</div>
+                <div id="dialpad">
+                    <div id="dialpad-container">
+                        <div id="first-row" class="rows">
+                            <div class="numbers">
+                                1
+                            </div>
+                            <div class="numbers">
+                                2
+                            </div>
+                            <div class="numbers">
+                                3
+                            </div>
+                        </div>
+                        <div id="second-row" class="rows">
+                            <div class="numbers">
+                                4
+                            </div>
+                            <div class="numbers">
+                                5
+                            </div>
+                            <div class="numbers">
+                                6
+                            </div>
+                        </div>
+                        <div id="third-row" class="rows">
+                            <div class="numbers">
+                                7
+                            </div>
+                            <div class="numbers">
+                                8
+                            </div>
+                            <div class="numbers">
+                                9
+                            </div>
+                        </div>
+                        <div id="third-row" class="rows">
+                            <div class="numbers">
+                                *
+                            </div>
+                            <div class="numbers">
+                                0
+                            </div>
+                            <div class="numbers">
+                                #
+                            </div>
+                        </div>
+                        <div id="fifth-row">
+                            <div id="call-button">
+                                Call
+                            </div>
+                            <div id="video-call-button">
+                                Video call
+                            </div>
+                            <div id="sms-button">
+                                SMS
+                            </div>
+                            <div id="backspace-button">
+                                Backspace
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
