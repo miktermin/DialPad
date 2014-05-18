@@ -127,3 +127,57 @@ html, body
 {
     margin-left: 10px;
 }
+
+/* Styles of button images, numbers and letters on a dialpad*/
+
+.num
+{
+    color: white;
+    font-size: 70px;
+    margin-left: 15px;
+    display: inline-block;
+    width: 35px;
+}
+
+.letter
+{
+    color: #B8B8B8;
+    display: inline-block;
+    height: 25px;
+    font-size: x-large;
+    position: relative;
+    top: -18px;
+    left: 14px;
+}
+
+#dialpad-astra
+{
+    color: white;
+    display: inline-block;
+    font-size: 70px;
+    position: relative;
+    left: 15px;
+    top: 10px;
+}
+
+#dialpad-p
+{
+    color: #B8B8B8;
+    display: inline-block;
+    height: 25px;
+    font-size: xx-large;
+    position: relative;
+    top: -16px;
+    left: 35px;
+}
+
+#dialpad-plus
+{
+    font-size: xx-large;
+    display: inline-block;
+    color: #B8B8B8;
+    font-weight: bold;
+    position: relative;
+    left: 25px;
+    top: -16px;
+}
