@@ -89,7 +89,7 @@ html, body
     background-color: #696969;
     display: inline-block;
     cursor: pointer;
-
+    border-radius: 3px;
 }
 
 .numbers img
@@ -115,6 +115,7 @@ html, body
 #call-button
 {
     width: 150px;
+    background-color: #3E7D09 !important
 }
 
 #video-call-button, #sms-button, #backspace-button
@@ -125,6 +126,12 @@ html, body
 #video-call-button
 {
     margin-left: 21px;
+    background-color: #3E7D09 !important;
+}
+
+#sms-button
+{
+    background-color: #E29811 !important;
 }
 
 #bottom-row > div + div + div
@@ -192,6 +199,7 @@ html, body
     display: inline-block;
     text-align: center;
     cursor: pointer;
+    border-radius: 3px;
 }
 #bottom-row > div img {
     width: auto;
@@ -206,5 +214,25 @@ html, body
     position: relative;
     top: 40%;
     left: 5%;
-    overflow: ellipsis !important;
+}
+
+.tab-text
+{
+    color: #D3D5D9;
+    line-height: 19px;
+}
+
+#matched-number
+{
+    width: 430px;
+    height: inherit;
+    border-right: 1px solid #4F4F4F;
+    display: inline-block;
+}
+
+#matched-quantity
+{
+    width: 100px;
+    height: inherit;
+    display: inline-block;
 }

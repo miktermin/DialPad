@@ -2,25 +2,35 @@
     <head>
         <title>Android DialPad</title>
         <link href="css/style.css" type="text/css" rel="stylesheet"></style>
+        <script src="lib/jquery-2.1.1.min.js"></script>
+        <script src="lib/knockout-3.1.0.js"></script>
+        <script src="js/application.js"></script>
+        <script src="js/custom_bindings/clickButton.js"></script>
+        <script src="js/viewModels/dialpadVM.js"></script>
     </head>
     <body>
         <div id="outer">
             <div id="container">
                 <div id="tabs">
                     <div class="tab">
-                        Keypad
+                        <img src="img/keypad.png" />
+                        <span class="tab-text">Keypad</span>
                     </div>
                     <div class="tab">
-                        Logs
+                        <img src="img/logs.png" />
+                        <span class="tab-text">Logs</span>
                     </div>
                     <div class="tab">
-                        Contacts
+                        <img src="img/contacts.png" />
+                        <span class="tab-text">Contacts</span>
                     </div>
                     <div class="tab">
-                        <img src="img/star.png">
+                        <img src="img/star.png" />
+                        <span class="tab-text">Favorites</span>
                     </div>
                     <div class="tab">
-                        <img src="img/groups.png">
+                        <img src="img/groups.png" />
+                        <span class="tab-text">Groups</span>
                     </div>
                 </div>
 
@@ -29,6 +39,8 @@
                 </div>
 
                 <div id="matched">
+                    <div id="matched-number"></div>
+                    <div id="matched-quantity"></div>
                 </div>
 
                 <div id="dialpad">
@@ -49,7 +61,7 @@
                                 <img src="img/call.png" />
                             </div>
                             <div id="video-call-button">
-                                <img src="img/call.png" />
+                                <img src="img/videocall.png" />
                             </div>
                             <div id="sms-button">
                                 <img src="img/sms.png" />
@@ -58,16 +70,9 @@
                                 <img src="img/backspace.png" />
                             </div>
                         </div>
-                    -->
                     </div>
                 </div>
             </div>
         </div>
-
-        <script src="lib/jquery-2.1.1.min.js"></script>
-        <script src="lib/knockout-3.1.0.js"></script>
-        <script src="js/application.js"></script>
-        <script src="js/custom_bindings/clickButton.js"></script>
-        <script src="js/viewModels/dialpadVM.js"></script>
     </body>
 </html>
