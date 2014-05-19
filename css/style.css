@@ -38,12 +38,18 @@ html, body
     margin: 0;
     padding: 0;
     float: left;
+    cursor: pointer;
+    line-height: 104px;
+    text-align: center;
 }
+
 
 #dialed
 {
     width: inherit;
     height: 150px;
+    color: white;
+    font-size: 25px;
 }
 
 #matched
@@ -82,17 +88,23 @@ html, body
     height: inherit;
     background-color: #696969;
     display: inline-block;
+    cursor: pointer;
+
 }
 
-#first-row > div.numbers + div,
-#second-row > div.numbers + div,
-#third-row > div.numbers + div,
-#fourth-row > div.numbers + div
+.numbers img
+{
+    position: relative;
+    top: 5px;
+    left: 10px;
+}
+
+.rows > div.numbers + div
 {
     margin-left: 21px;
 }
 
-#fifth-row
+#bottom-row
 {
     width: inherit;
     height: 80px;
@@ -103,19 +115,11 @@ html, body
 #call-button
 {
     width: 150px;
-    height: 80px;
-    background-color: #696969;
-    display: inline-block;
 }
 
-#video-call-button,
-#sms-button,
-#backspace-button
+#video-call-button, #sms-button, #backspace-button
 {
     width: 99px;
-    height: 80px;
-    background-color: #696969;
-    display: inline-block;
 }
 
 #video-call-button
@@ -123,7 +127,7 @@ html, body
     margin-left: 21px;
 }
 
-#fifth-row > div + div + div
+#bottom-row > div + div + div
 {
     margin-left: 10px;
 }
@@ -181,12 +185,25 @@ html, body
     left: 25px;
     top: -16px;
 }
-
-img
-{
+#bottom-row > div {
+    height: 80px;
+    line-height: 80px;
+    background-color: #696969;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+#bottom-row > div img {
     width: auto;
     height: auto;
-    margin: 0;
-    padding: 0;
-    display: inline-block;
+    top: 4px;
+    position: relative;
+}
+
+#dialed-number
+{
+    font-size: 50px;
+    position: relative;
+    top: 40%;
+    left: 15%;
 }
