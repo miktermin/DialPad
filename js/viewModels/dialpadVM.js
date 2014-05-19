@@ -24,9 +24,7 @@ function DialPadViewModel() {
             if (index % 3 === 0) {
                 row = [];
                 rows.push(row);
-                
             }
-
             row.push(item);
         });
         return rows;
@@ -35,7 +33,10 @@ function DialPadViewModel() {
     this.dialed = ko.observableArray();
 
     this.addToDialed = function(el) {
-        self.dialed.push(el.num);
+        if(self.dialed().length < 19)
+        {
+            self.dialed.push(el.num);
+        }
     }
 
     this.removeFromDialed = function() {

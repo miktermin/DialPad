@@ -205,5 +205,6 @@ html, body
     font-size: 50px;
     position: relative;
     top: 40%;
-    left: 15%;
+    left: 5%;
+    overflow: ellipsis !important;
 }
