@@ -220,6 +220,7 @@ html, body
 {
     color: #D3D5D9;
     line-height: 19px;
+    font-weight: bold;
 }
 
 #matched-number
