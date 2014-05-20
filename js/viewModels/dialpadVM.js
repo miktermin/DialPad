@@ -1,6 +1,11 @@
 function DialPadViewModel() {
     var self = this;
 
+        function Contact(name, number) {
+            this.name = name;
+            this.number = number;
+        }
+
 
     this.numPad = ko.observableArray([
         {"num":1, "lett":[]},
@@ -16,6 +21,10 @@ function DialPadViewModel() {
         {"num":0, "lett":["+"]},
         {"num":'#', "lett":[]}
     ]);
+
+    this.contacts = ko.observableArray([
+        new Contact("Michael", '099211214')
+        ]);
 
     this.numPadPerRow = ko.computed(function() {
         var rows = [];
@@ -46,4 +55,30 @@ function DialPadViewModel() {
     this.letters = function(el) {
         return el["lett"].join('').toUpperCase();
     }
+
+    this.matchFilter = ko.computed(function() {
+        var matched = ko.observableArray();
+    });
+
+    this.matchByName = ko.computed(function() {
+        var matchedByName = ko.observableArray();
+    });
+
+    this.matchByNumber = ko.computed(function() {
+        var matched = ko.observableArray();
+        var formattedDialed = self.dialed().join('');
+        var pattern = new RegExp(self.dialed().join(''), "g");
+        for(var i = 0; i < self.contacts().length; i++)
+        {
+            if(self.contacts()[i].number.match(pattern) !== null)
+            {
+
+                matched.push(self.contacts()[i]);
+            }
+        }
+        console.log(matched());
+    });
 }
+
+
+

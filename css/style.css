@@ -229,6 +229,8 @@ html, body
     height: inherit;
     border-right: 1px solid #4F4F4F;
     display: inline-block;
+    color: white;
+    font-size: 15px;
 }
 
 #matched-quantity
@@ -237,3 +239,4 @@ html, body
     height: inherit;
     display: inline-block;
 }
+
