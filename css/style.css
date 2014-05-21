@@ -228,15 +228,24 @@ html, body
     width: 430px;
     height: inherit;
     border-right: 1px solid #4F4F4F;
-    display: inline-block;
+    float: left;
     color: white;
     font-size: 15px;
 }
 
 #matched-quantity
 {
-    width: 100px;
+    width: 99px;
     height: inherit;
-    display: inline-block;
+    float: right;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 104px;
+    font-size: 40px;
 }
 
+.highlighted-tab
+{
+    background-color: #3F86C3;
+}

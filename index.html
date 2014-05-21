@@ -5,32 +5,16 @@
         <script src="lib/jquery-2.1.1.min.js"></script>
         <script src="lib/knockout-3.1.0.js"></script>
         <script src="js/application.js"></script>
-        <script src="js/custom_bindings/clickButton.js"></script>
+        <script src="js/custom_bindings/clickTab.js"></script>
         <script src="js/viewModels/dialpadVM.js"></script>
     </head>
     <body>
         <div id="outer">
             <div id="container">
-                <div id="tabs">
-                    <div class="tab">
-                        <img src="img/keypad.png" />
-                        <span class="tab-text">Keypad</span>
-                    </div>
-                    <div class="tab">
-                        <img src="img/logs.png" />
-                        <span class="tab-text">Logs</span>
-                    </div>
-                    <div class="tab">
-                        <img src="img/contacts.png" />
-                        <span class="tab-text">Contacts</span>
-                    </div>
-                    <div class="tab">
-                        <img src="img/star.png" />
-                        <span class="tab-text">Favorites</span>
-                    </div>
-                    <div class="tab">
-                        <img src="img/groups.png" />
-                        <span class="tab-text">Groups</span>
+                <div id="tabs" data-bind="foreach: tabs">
+                    <div class="tab" data-bind="click: $parent.setCurrentTab.bind($parent, id), css:{'highlighted-tab': $parent.currentTab() === id}">
+                        <img data-bind="attr: {src: imgSrc}" />
+                        <span class="tab-text" data-bind="text: tabText"></span>
                     </div>
                 </div>
 
@@ -39,8 +23,8 @@
                 </div>
 
                 <div id="matched">
-                    <div id="matched-number" data-bind="text: matchByNumber"></div>
-                    <div id="matched-quantity"></div>
+                    <div id="matched-number"></div>
+                    <div id="matched-quantity" data-bind="visible: matched().length > 0, text: matched().length"></div>
                 </div>
 
                 <div id="dialpad">

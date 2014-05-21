@@ -1,10 +1,25 @@
 function DialPadViewModel() {
     var self = this;
 
-        function Contact(name, number) {
-            this.name = name;
-            this.number = number;
-        }
+    function Contact(name, number) {
+        this.name = name;
+        this.number = number;
+    }
+    this.currentTab = ko.observable(1);
+    this.tabs = ko.observableArray([
+            {imgSrc:"img/keypad.png", tabText:"Keypad", id: 1},
+            {imgSrc:"img/logs.png", tabText:"Logs", id: 2},
+            {imgSrc:"img/contacts.png", tabText:"Contacts", id: 3},
+            {imgSrc:"img/star.png", tabText:"Favorites", id: 4},
+            {imgSrc:"img/groups.png", tabText:"Groups", id: 5}
+        ]);
+
+    
+
+    this.setCurrentTab = function(id) {
+        self.currentTab(id);
+    };
+
 
 
     this.numPad = ko.observableArray([
@@ -23,8 +38,13 @@ function DialPadViewModel() {
     ]);
 
     this.contacts = ko.observableArray([
-        new Contact("Michael", '099211214')
+        new Contact("Michael", '099211214'),
+        new Contact("John", '099125465'),
+        new Contact("Sharp", "010#354"),
+        new Contact("Arthur", "010271219")
         ]);
+
+    this.matched = ko.observableArray([]);
 
     this.numPadPerRow = ko.computed(function() {
         var rows = [];
@@ -56,27 +76,19 @@ function DialPadViewModel() {
         return el["lett"].join('').toUpperCase();
     }
 
-    this.matchFilter = ko.computed(function() {
-        var matched = ko.observableArray();
-    });
-
-    this.matchByName = ko.computed(function() {
-        var matchedByName = ko.observableArray();
-    });
-
     this.matchByNumber = ko.computed(function() {
-        var matched = ko.observableArray();
-        var formattedDialed = self.dialed().join('');
-        var pattern = new RegExp(self.dialed().join(''), "g");
-        for(var i = 0; i < self.contacts().length; i++)
+        self.matched([]);
+        if(self.dialed().join().length !== 0)
         {
-            if(self.contacts()[i].number.match(pattern) !== null)
+            var pattern = new RegExp(self.dialed().join(''), "g");
+            for(var i = 0; i < self.contacts().length; i++)
             {
-
-                matched.push(self.contacts()[i]);
+                if(self.contacts()[i].number.match(pattern) !== null)
+                {
+                    self.matched.push(self.contacts()[i]);
+                }
             }
         }
-        console.log(matched());
     });
 }
 
