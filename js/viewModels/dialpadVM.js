@@ -14,13 +14,20 @@ function DialPadViewModel() {
             {imgSrc:"img/groups.png", tabText:"Groups", id: 5}
         ]);
 
-    
-
     this.setCurrentTab = function(id) {
         self.currentTab(id);
     };
 
+    this.clickMatchedList = ko.observable();
 
+    this.showMatchedList = function() {
+        if(self.clickMatchedList()) {
+            self.clickMatchedList(false);
+        } else {
+            self.clickMatchedList(true);
+        }
+        return self.clickMatchedList();
+    }
 
     this.numPad = ko.observableArray([
         {"num":1, "lett":[]},
@@ -38,6 +45,22 @@ function DialPadViewModel() {
     ]);
 
     this.contacts = ko.observableArray([
+        new Contact("Albert", "37321232"),
+        new Contact("Michael", '099211214'),
+        new Contact("John", '099125465'),
+        new Contact("Sharp", "010#354"),
+        new Contact("Arthur", "010271219"),
+        new Contact("Albert", "37321232"),
+        new Contact("Michael", '099211214'),
+        new Contact("John", '099125465'),
+        new Contact("Sharp", "010#354"),
+        new Contact("Arthur", "010271219"),
+        new Contact("Albert", "37321232"),
+        new Contact("Michael", '099211214'),
+        new Contact("John", '099125465'),
+        new Contact("Sharp", "010#354"),
+        new Contact("Arthur", "010271219"),
+        new Contact("Albert", "37321232"),
         new Contact("Michael", '099211214'),
         new Contact("John", '099125465'),
         new Contact("Sharp", "010#354"),
@@ -45,6 +68,10 @@ function DialPadViewModel() {
         ]);
 
     this.matched = ko.observableArray([]);
+
+    this.matchedFirst = ko.computed(function() {
+        return self.matched()[0] || {};
+    });
 
     this.numPadPerRow = ko.computed(function() {
         var rows = [];
@@ -76,7 +103,7 @@ function DialPadViewModel() {
         return el["lett"].join('').toUpperCase();
     }
 
-    this.matchByNumber = ko.computed(function() {
+    this.filter = ko.computed(function() {
         self.matched([]);
         if(self.dialed().join().length !== 0)
         {

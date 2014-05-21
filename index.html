@@ -5,7 +5,6 @@
         <script src="lib/jquery-2.1.1.min.js"></script>
         <script src="lib/knockout-3.1.0.js"></script>
         <script src="js/application.js"></script>
-        <script src="js/custom_bindings/clickTab.js"></script>
         <script src="js/viewModels/dialpadVM.js"></script>
     </head>
     <body>
@@ -18,16 +17,33 @@
                     </div>
                 </div>
 
+                <!-- ko if: currentTab() === 3 -->
+                <!--div data-bind="template:{name:'contacts'}"></div-->
+                <!-- /ko -->
+
                 <div id="dialed">
                     <span id="dialed-number" data-bind="text: dialed().join('')"></span>
                 </div>
 
                 <div id="matched">
-                    <div id="matched-number"></div>
-                    <div id="matched-quantity" data-bind="visible: matched().length > 0, text: matched().length"></div>
+                    <div id="matched-number">
+                        <span id="first-matched-name" data-bind="text: matchedFirst().name"></span>
+                        <span id="first-matched-number" data-bind="text: matchedFirst().number"></span>
+                    </div>
+                    <div id="matched-quantity" data-bind="visible: matched().length > 0, text: matched().length, click: showMatchedList"></div>
                 </div>
 
-                <div id="dialpad">
+                <!-- ko if: matched().length > 0 -->
+                <ul id="listOfMatched" data-bind="foreach: matched(), visible: clickMatchedList()">
+                    <li>
+                        <span data-bind="text: name"></span>
+                        <span data-bind="text: number"></span>
+                    </li>
+                </ul>
+                <!-- /ko -->
+
+
+                <div id="dialpad" data-bind="visible: !clickMatchedList()">
                     <div id="dialpad-container">
                         <!-- ko foreach: numPadPerRow -->
                         <div class="rows">
@@ -56,6 +72,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- /ko -->
             </div>
         </div>
     </body>
