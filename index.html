@@ -76,7 +76,7 @@
         </div>
         <script type="text/html" id="contacts">
             <ul id="contact-list" data-bind="foreach: contacts">
-                <li data-bind="click: $parent.selectContact">
+                <li data-bind="click: $parent.selectContact, css:{'highlighted-contact': $data === $parent.currentContact()}">
                     <span data-bind="text: name"></span>
                     <span data-bind="text: number"></span>
                 </li>
