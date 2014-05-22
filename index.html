@@ -11,17 +11,17 @@
         <div id="outer">
             <div id="container">
                 <div id="tabs" data-bind="foreach: tabs">
-                    <div class="tab" data-bind="click: $parent.setCurrentTab.bind($parent, id), css:{'highlighted-tab': $parent.currentTab() === id}">
+                    <div class="tab" data-bind="click: $parent.setCurrentTab, css:{'highlighted-tab': $parent.currentTab().id === id}">
                         <img data-bind="attr: {src: imgSrc}" />
                         <span class="tab-text" data-bind="text: tabText"></span>
                     </div>
                 </div>
 
-                <!-- ko if: currentTab() === 3 -->
+                <!-- ko if: currentTab().id === 3 -->
                 <div data-bind="template:{name:'contacts'}" id="contact-list-container"></div>
                 <!-- /ko -->
 
-                <!-- ko if: currentTab() !== 3 -->
+                <!-- ko if: currentTab().id !== 3 -->
                 <div id="dialed">
                     <span id="dialed-number" data-bind="text: dialed().join('')"></span>
                 </div>
@@ -83,6 +83,12 @@
                     <span data-bind="text: number"></span>
                 </li>
             </ul>
+            <div id="input-fields">
+                <input type="text" onfocus="if(this.value == 'Name') { this.value = ''; }" value="Name" data-bind="value: contactName"/>
+                <input type="text" onfocus="if(this.value == 'Number') { this.value = ''; }" value="Number" data-bind="value: contactNumber"/>
+                <div class="remove" >Remove</div>
+                <div class="add" data-bind="click: addContact">Add</div>
+            </div>
         </script>
     </body>
 </html>

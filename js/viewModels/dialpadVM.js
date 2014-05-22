@@ -5,6 +5,17 @@ function DialPadViewModel() {
         this.name = name;
         this.number = number;
     }
+
+    this.contactName = ko.observable("");
+    this.contactNumber = ko.observable("");
+
+    this.addContact = function() {
+        if(self.contactName !== undefined && self.contactNumber !== undefined)
+        {
+            self.contacts.push(new Contact(self.contactName(), self.contactNumber()));
+        }
+    }
+
     this.currentTab = ko.observable(1);
     this.tabs = ko.observableArray([
             {imgSrc:"img/keypad.png", tabText:"Keypad", id: 1},
@@ -14,19 +25,14 @@ function DialPadViewModel() {
             {imgSrc:"img/groups.png", tabText:"Groups", id: 5}
         ]);
 
-    this.setCurrentTab = function(id) {
-        self.currentTab(id);
+    this.setCurrentTab = function(tab) {
+        self.currentTab(tab);
     };
 
     this.clickMatchedList = ko.observable();
 
     this.showMatchedList = function() {
-        if(self.clickMatchedList()) {
-            self.clickMatchedList(false);
-        } else {
-            self.clickMatchedList(true);
-        }
-        return self.clickMatchedList();
+        return self.clickMatchedList(!self.clickMatchedList());
     }
 
     this.numPad = ko.observableArray([
