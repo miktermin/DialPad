@@ -472,5 +472,6 @@ input
 .add, .remove
 {
     margin-top: 25px;
+    cursor: pointer;
 }
 

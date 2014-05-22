@@ -15,8 +15,7 @@ function DialPadViewModel() {
             self.contacts.push(new Contact(self.contactName(), self.contactNumber()));
         }
     }
-
-    this.currentTab = ko.observable(1);
+    
     this.tabs = ko.observableArray([
             {imgSrc:"img/keypad.png", tabText:"Keypad", id: 1},
             {imgSrc:"img/logs.png", tabText:"Logs", id: 2},
@@ -25,10 +24,11 @@ function DialPadViewModel() {
             {imgSrc:"img/groups.png", tabText:"Groups", id: 5}
         ]);
 
+    this.currentTab = ko.observable(this.tabs()[0]);
     this.setCurrentTab = function(tab) {
         self.currentTab(tab);
     };
-
+    
     this.clickMatchedList = ko.observable();
 
     this.showMatchedList = function() {
