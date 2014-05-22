@@ -18,9 +18,10 @@
                 </div>
 
                 <!-- ko if: currentTab() === 3 -->
-                <!--div data-bind="template:{name:'contacts'}"></div-->
+                <div data-bind="template:{name:'contacts'}" id="contact-list-container"></div>
                 <!-- /ko -->
 
+                <!-- ko if: currentTab() !== 3 -->
                 <div id="dialed">
                     <span id="dialed-number" data-bind="text: dialed().join('')"></span>
                 </div>
@@ -75,5 +76,13 @@
                 <!-- /ko -->
             </div>
         </div>
+        <script type="text/html" id="contacts">
+            <ul id="contact-list" data-bind="foreach: contacts">
+                <li>
+                    <span data-bind="text: name"></span>
+                    <span data-bind="text: number"></span>
+                </li>
+            </ul>
+        </script>
     </body>
 </html>

@@ -243,6 +243,7 @@ html, body
     vertical-align: middle;
     line-height: 104px;
     font-size: 40px;
+    cursor: pointer;
 }
 
 .highlighted-tab
@@ -289,10 +290,35 @@ html, body
 }
 
 /* Styles of contacts template */
-
-#contacts
+#contact-list-container
 {
-    width: 100px;
-    height: 100px;
-    background-color: red;
+    overflow-y: auto;
+    height: 630px;
+    width: inherit;
+    border: 1px solid #252F3F;
+}
+
+#contact-list
+{
+    height: inherit;
+    color: white;
+    list-style-type: none;
+    padding-left: 0;
+    padding-top:  0;
+    margin-top: 0;
+}
+
+#contact-list li
+{
+    background-color: #696969;
+    width: auto;
+    border: 1px solid gray;
+}
+
+#contact-list li span
+{
+    color: white;
+    font-size: 25px;
+    display: block;
+    padding-left: 20px;
 }
