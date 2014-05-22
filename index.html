@@ -21,7 +21,7 @@
                 <div data-bind="template:{name:'contacts'}" id="contact-list-container"></div>
                 <!-- /ko -->
 
-                <!-- ko if: currentTab().id !== 3 -->
+                <!-- ko if: currentTab().id === 1 -->
                 <div id="dialed">
                     <span id="dialed-number" data-bind="text: dialed().join('')"></span>
                 </div>
@@ -42,8 +42,6 @@
                     </li>
                 </ul>
                 <!-- /ko -->
-
-
                 <div id="dialpad" data-bind="visible: !clickMatchedList()">
                     <div id="dialpad-container">
                         <!-- ko foreach: numPadPerRow -->
@@ -84,8 +82,8 @@
                 </li>
             </ul>
             <div id="input-fields">
-                <input type="text" onfocus="if(this.value == 'Name') { this.value = ''; }" value="Name" data-bind="value: contactName"/>
-                <input type="text" onfocus="if(this.value == 'Number') { this.value = ''; }" value="Number" data-bind="value: contactNumber"/>
+                <input type="text" value="Name" data-bind="value: contactName" />
+                <input type="text" value="Phone Number" data-bind="value: contactNumber"/>
                 <div class="remove" >Remove</div>
                 <div class="add" data-bind="click: addContact">Add</div>
             </div>

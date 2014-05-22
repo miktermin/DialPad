@@ -27,6 +27,7 @@ html, body
 {
     height: 104px;
     width: inherit;
+    cursor: pointer;
 }
 
 .tab
@@ -39,7 +40,6 @@ html, body
     margin: 0;
     padding: 0;
     float: left;
-    cursor: pointer;
     line-height: 104px;
     text-align: center;
 }
@@ -330,6 +330,12 @@ html, body
     width: 528px;
 }
 
+#contact-list-container li
+{
+    cursor: pointer;
+}
+
+
 #contact-list-container li span
 {
     width: auto;
@@ -472,5 +478,6 @@ input
 .add, .remove
 {
     margin-top: 25px;
+    cursor: pointer;
 }
 
