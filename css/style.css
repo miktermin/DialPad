@@ -354,7 +354,8 @@ html, body
     bottom: 0;
     width: 530px;
     z-index: 100;
-    margin-top: 0
+    margin-top: 0;
+    color:black;
 }
 
 #input-fields span 
@@ -479,5 +480,10 @@ input
 {
     margin-top: 25px;
     cursor: pointer;
+}
+
+.highlighted-contact
+{
+    background-color: orange;
 }
 

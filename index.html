@@ -76,7 +76,7 @@
         </div>
         <script type="text/html" id="contacts">
             <ul id="contact-list" data-bind="foreach: contacts">
-                <li>
+                <li data-bind="click: $parent.selectContact">
                     <span data-bind="text: name"></span>
                     <span data-bind="text: number"></span>
                 </li>
@@ -84,7 +84,7 @@
             <div id="input-fields">
                 <input type="text" value="Name" data-bind="value: contactName" />
                 <input type="text" value="Phone Number" data-bind="value: contactNumber"/>
-                <div class="remove" >Remove</div>
+                <div class="remove" data-bind="click: removeContact">Remove</div>
                 <div class="add" data-bind="click: addContact">Add</div>
             </div>
         </script>

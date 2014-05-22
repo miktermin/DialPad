@@ -29,8 +29,8 @@ function DialPadViewModel() {
         self.currentTab(tab);
     };
     
-    this.clickMatchedList = ko.observable();
 
+    this.clickMatchedList = ko.observable();
     this.showMatchedList = function() {
         return self.clickMatchedList(!self.clickMatchedList());
     }
@@ -51,47 +51,17 @@ function DialPadViewModel() {
     ]);
 
     this.contacts = ko.observableArray([
-        new Contact("Albert", "37321232"),
-        new Contact("Michael", '099211214'),
-        new Contact("John", '099125465'),
-        new Contact("Sharp", "010#354"),
-        new Contact("Arthur", "010271219"),
-        new Contact("Albert", "37321232"),
-        new Contact("Michael", '099211214'),
-        new Contact("John", '099125465'),
-        new Contact("Sharp", "010#354"),
-        new Contact("Arthur", "010271219"),
-        new Contact("Albert", "37321232"),
-        new Contact("Michael", '099211214'),
-        new Contact("John", '099125465'),
-        new Contact("Sharp", "010#354"),
-        new Contact("Arthur", "010271219"),
-        new Contact("Albert", "37321232"),
-        new Contact("Michael", '099211214'),
-        new Contact("John", '099125465'),
-        new Contact("Sharp", "010#354"),
-        new Contact("Arthur", "010271219"),
-        new Contact("Albert", "37321232"),
-        new Contact("Michael", '099211214'),
-        new Contact("John", '099125465'),
-        new Contact("Sharp", "010#354"),
-        new Contact("Arthur", "010271219"),
-        new Contact("Albert", "37321232"),
-        new Contact("Michael", '099211214'),
-        new Contact("John", '099125465'),
-        new Contact("Sharp", "010#354"),
-        new Contact("Arthur", "010271219"),
-        new Contact("Albert", "37321232"),
-        new Contact("Michael", '099211214'),
-        new Contact("John", '099125465'),
-        new Contact("Sharp", "010#354"),
-        new Contact("Arthur", "010271219"),
-        new Contact("Albert", "37321232"),
-        new Contact("Michael", '099211214'),
-        new Contact("John", '099125465'),
         new Contact("Sharp", "010#354"),
         new Contact("Arthur", "010271219")
         ]);
+
+    this.currentContact = ko.observable({});
+    this.selectContact = function(c) {
+        self.currentContact(c);
+    }
+    this.removeContact = function() {
+        self.contacts.remove(self.currentContact());
+    }
 
     this.matched = ko.observableArray([]);
 
