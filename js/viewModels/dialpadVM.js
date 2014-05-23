@@ -10,7 +10,7 @@ function DialPadViewModel() {
     this.contactNumber = ko.observable("");
 
     this.addContact = function() {
-        if(self.contactName !== undefined && self.contactNumber !== undefined)
+        if(self.contactName() !== "" && self.contactNumber() !== "")
         {
             self.contacts.push(new Contact(self.contactName(), self.contactNumber()));
         }
