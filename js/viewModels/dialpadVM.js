@@ -124,6 +124,7 @@ function DialPadViewModel() {
             var astraArray = [];
             astraArray = dialedNumber.match(/[*]/g);
 
+
             if(astraArray !== null && astraArray.length > 0)
             {
                 dialedNumber = dialedNumber.replace(/[*]/g, '\\*');
