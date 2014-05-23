@@ -82,7 +82,7 @@ function DialPadViewModel() {
         return rows;
     });
 
-    this.dialed = ko.observableArray();
+    this.dialed = ko.observableArray([]);
 
     this.addToDialed = function(el) {
         if(self.dialed().length < 19)
@@ -103,7 +103,16 @@ function DialPadViewModel() {
         self.matched([]);
         if(self.dialed().join().length !== 0)
         {
-            var pattern = new RegExp(self.dialed().join(''), "g");
+            var dialedNumber = self.dialed().join('');
+            var astraArray = [];
+            astraArray = dialedNumber.match(/[*]/g);
+
+            if(astraArray.length > 0)
+            {
+                dialedNumber = dialedNumber.replace(/[*]/g, '\\*');
+            }
+
+            var pattern = new RegExp(dialedNumber, "g");
             for(var i = 0; i < self.contacts().length; i++)
             {
                 if(self.contacts()[i].number.match(pattern) !== null)
