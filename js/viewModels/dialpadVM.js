@@ -51,9 +51,26 @@ function DialPadViewModel() {
     ]);
 
     this.contacts = ko.observableArray([
-        new Contact("Sharp", "010#354"),
-        new Contact("Arthur", "010271219")
-        ]);
+        new Contact("Abel", "010223265"),
+        new Contact("Alan", "077*094215259"),
+        new Contact("Bartholomew", "089798989"),
+        new Contact("Carol", "74100003665"),
+        new Contact("David", "789456123"),
+        new Contact("Eleanor", "0887946130"),
+        new Contact("Frank", "077656565"),
+        new Contact("Gilmour", "45464561"),
+        new Contact("Helen", "012345687"),
+        new Contact("Irwin", "091120947"),
+        new Contact("Mher", "066666666"),
+        new Contact("Matt", "9887454646"),
+        new Contact("New", "0025898989"),
+        new Contact("Kate", "*77*12113485"),
+        new Contact("Loyd", "045461216345"),
+        new Contact("Oscar", "45431215345643"),
+        new Contact("Paris", "45463121684"),
+        new Contact("Silvia", "41545845"), 
+        new Contact("Tom", "45484864313")
+    ]);
 
     this.currentContact = ko.observable({});
     this.selectContact = function(c) {
@@ -82,7 +99,7 @@ function DialPadViewModel() {
         return rows;
     });
 
-    this.dialed = ko.observableArray();
+    this.dialed = ko.observableArray([]);
 
     this.addToDialed = function(el) {
         if(self.dialed().length < 19)
@@ -103,7 +120,16 @@ function DialPadViewModel() {
         self.matched([]);
         if(self.dialed().join().length !== 0)
         {
-            var pattern = new RegExp(self.dialed().join(''), "g");
+            var dialedNumber = self.dialed().join('');
+            var astraArray = [];
+            astraArray = dialedNumber.match(/[*]/g);
+
+            if(astraArray !== null && astraArray.length > 0)
+            {
+                dialedNumber = dialedNumber.replace(/[*]/g, '\\*');
+            }
+
+            var pattern = new RegExp(dialedNumber, "g");
             for(var i = 0; i < self.contacts().length; i++)
             {
                 if(self.contacts()[i].number.match(pattern) !== null)

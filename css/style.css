@@ -280,6 +280,7 @@ html, body
     background-color: #696969;
     width: auto;
     border: 1px solid gray;
+    text-align: center;
 }
 
 #listOfMatched li span
