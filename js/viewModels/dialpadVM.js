@@ -29,7 +29,6 @@ function DialPadViewModel() {
     this.setCurrentTab = function(tab) {
         self.currentTab(tab);
     };
-    
 
     this.clickMatchedList = ko.observable();
     this.showMatchedList = function() {
@@ -77,6 +76,7 @@ function DialPadViewModel() {
     this.selectContact = function(c) {
         self.currentContact(c);
     }
+
     this.removeContact = function() {
         self.contacts.remove(self.currentContact());
     }
@@ -85,14 +85,13 @@ function DialPadViewModel() {
         var matchedContacts = [];
         if(self.dialed().length !== 0)
         {
-            var dialedNumber = self.dialed();
-            var astraArray = dialedNumber.match(/[*]/g);
+            var dialed = self.dialed();
+            var astraArray = dialed.match(/[*]/g);
             if(astraArray !== null && astraArray.length > 0)
             {
-                dialedNumber = dialedNumber.replace(/[*]/g, '\\*');
+               dialed = self.dialed().replace(/[*]/g, '\\*');
             }
-
-            var pattern = new RegExp(dialedNumber, "g");
+            var pattern = new RegExp(dialed, "g");
             for(var i = 0; i < self.contacts().length; i++)
             {
                 if(self.contacts()[i].number.match(pattern) !== null)

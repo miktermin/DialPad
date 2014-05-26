@@ -16,16 +16,13 @@
                         <span class="tab-text" data-bind="text: tabText"></span>
                     </div>
                 </div>
-
                 <!-- ko if: currentTab().id === 3 -->
                 <div data-bind="template:{name:'contacts'}" id="contact-list-container"></div>
                 <!-- /ko -->
-
                 <!-- ko if: currentTab().id === 1 -->
                 <div id="dialed">
                     <span id="dialed-number" data-bind="text: dialed()"></span>
                 </div>
-
                 <div id="matched">
                     <div id="matched-number">
                         <span id="first-matched-name" data-bind="text: matchedFirst().name"></span>
@@ -33,7 +30,6 @@
                     </div>
                     <div id="matched-quantity" data-bind="visible: matched().length > 0, text: matched().length, click: showMatchedList"></div>
                 </div>
-
                 <!-- ko if: matched().length > 0 -->
                 <ul id="listOfMatched" data-bind="foreach: matched(), visible: clickMatchedList()">
                     <li>
@@ -54,7 +50,6 @@
                             <!-- /ko -->
                         </div>
                         <!-- /ko -->
-
                         <div id="bottom-row">
                             <div id="call-button">
                                 <img src="img/call.png" />
