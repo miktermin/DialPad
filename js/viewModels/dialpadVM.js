@@ -6,11 +6,12 @@ function DialPadViewModel() {
         this.number = number;
     }
 
+    this.dialed = ko.observable("");
     this.contactName = ko.observable("");
     this.contactNumber = ko.observable("");
 
     this.addContact = function() {
-        if(self.contactName() !== "" && self.contactNumber() !== "")
+        if(self.contactName() && self.contactNumber())
         {
             self.contacts.push(new Contact(self.contactName(), self.contactNumber()));
         }
@@ -80,7 +81,28 @@ function DialPadViewModel() {
         self.contacts.remove(self.currentContact());
     }
 
-    this.matched = ko.observableArray([]);
+    this.matched = ko.computed(function() {
+        var matchedContacts = [];
+        if(self.dialed().length !== 0)
+        {
+            var dialedNumber = self.dialed();
+            var astraArray = dialedNumber.match(/[*]/g);
+            if(astraArray !== null && astraArray.length > 0)
+            {
+                dialedNumber = dialedNumber.replace(/[*]/g, '\\*');
+            }
+
+            var pattern = new RegExp(dialedNumber, "g");
+            for(var i = 0; i < self.contacts().length; i++)
+            {
+                if(self.contacts()[i].number.match(pattern) !== null)
+                {
+                    matchedContacts.push(self.contacts()[i]);
+                }
+            }
+        }
+            return matchedContacts;
+    });
 
     this.matchedFirst = ko.computed(function() {
         return self.matched()[0] || {};
@@ -99,47 +121,20 @@ function DialPadViewModel() {
         return rows;
     });
 
-    this.dialed = ko.observableArray([]);
-
     this.addToDialed = function(el) {
         if(self.dialed().length < 19)
         {
-            self.dialed.push(el.num);
+            self.dialed(self.dialed() + el.num);
         }
     }
 
     this.removeFromDialed = function() {
-        self.dialed.pop();
+        self.dialed(self.dialed().substring(0, self.dialed().length - 1));
     }
 
     this.letters = function(el) {
         return el["lett"].join('').toUpperCase();
     }
-
-    this.filter = ko.computed(function() {
-        self.matched([]);
-        if(self.dialed().join().length !== 0)
-        {
-            var dialedNumber = self.dialed().join('');
-            var astraArray = [];
-            astraArray = dialedNumber.match(/[*]/g);
-
-
-            if(astraArray !== null && astraArray.length > 0)
-            {
-                dialedNumber = dialedNumber.replace(/[*]/g, '\\*');
-            }
-
-            var pattern = new RegExp(dialedNumber, "g");
-            for(var i = 0; i < self.contacts().length; i++)
-            {
-                if(self.contacts()[i].number.match(pattern) !== null)
-                {
-                    self.matched.push(self.contacts()[i]);
-                }
-            }
-        }
-    });
 }
 
 
