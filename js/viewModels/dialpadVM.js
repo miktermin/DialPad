@@ -83,20 +83,21 @@ function DialPadViewModel() {
 
     this.matched = ko.computed(function() {
         var matchedContacts = [];
+        var contacts = self.contacts();
         if(self.dialed().length !== 0)
         {
             var dialed = self.dialed();
             var astraArray = dialed.match(/[*]/g);
-            if(astraArray !== null && astraArray.length > 0)
+            if(astraArray && astraArray.length > 0)
             {
                dialed = self.dialed().replace(/[*]/g, '\\*');
             }
             var pattern = new RegExp(dialed, "g");
-            for(var i = 0; i < self.contacts().length; i++)
+            for(var i = 0; i < contacts.length; i++)
             {
-                if(self.contacts()[i].number.match(pattern) !== null)
+                if(contacts[i].number.match(pattern) !== null)
                 {
-                    matchedContacts.push(self.contacts()[i]);
+                    matchedContacts.push(contacts[i]);
                 }
             }
         }
